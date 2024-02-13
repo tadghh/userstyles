@@ -1,42 +1,56 @@
-/* 
+/*
 Add this file to userChrome.css in your firefox profile folder
 This file will make the tab close icon appear in place of the favicon when the user hovers over the tab's icon
 */
 
-/* 
- Favicon tab close 
+/*
+ Favicon tab close
  */
 
-.tab-content{
-  pointer-events: none
+.tab-content {
+	pointer-events: none;
 }
 
-.tab-icon-image:not([busy]){ display: block !important; }
+.tab-icon-image:not([busy]) {
+	display: block !important;
+}
 
 /* Transition animation for both the favicon and close icon */
-.tab-icon-image, .tab-close-button { transition: opacity 0.3s ease }
+.tab-icon-image,
+.tab-close-button {
+	will-change: opacity;
+	transition: opacity 260ms cubic-bezier(0.62, 0.16, 0.13, 1.01);
+}
 
- /* States when opacity should be zero*/
-.tab-content:hover .tab-icon-image, .tab-close-button { opacity: 0 }
+/* States when opacity should be zero*/
+.tab-content:hover .tab-icon-image,
+.tab-close-button {
+	opacity: 0;
+}
 
-.tab-close-button{
-  order: -1;
-  display: flex !important;
-  position: relative;
-  margin-inline: -4px -20px !important;
-  padding-inline-start: 7px !important;
-  width: unset !important;
-  pointer-events: auto;
+.tab-close-button {
+	order: -1;
+	display: flex !important;
+	position: relative;
+	margin-inline: -4px -20px !important;
+	padding-inline-start: 7px !important;
+	width: unset !important;
+	pointer-events: auto;
 }
 
 /*
  Show close button when hovering on tab, and favicon visability
  */
- :where(.tab-content:hover) > .tab-close-button, .tab-icon-image{ opacity: 1 }
- 
- /* Hide close icon for pinned tabs */
-.tabbrowser-tab[pinned] .tab-close-button{ display: none !important; }
+:where(.tab-content:hover) > .tab-close-button,
+.tab-icon-image {
+	opacity: 1;
+}
 
-/* 
- End of favicon tab close 
+/* Hide close icon for pinned tabs */
+.tabbrowser-tab[pinned] .tab-close-button {
+	display: none !important;
+}
+
+/*
+ End of favicon tab close
  */
