@@ -1,9 +1,9 @@
 # Firefox CSS
 
-Custom css for Firefox, changing behaviour and style of different elements/controls
+Custom CSS snippets for Firefox, some change behaviour and others modify the user interface.
 
 > [!NOTE]
-> To enable custom css
+> To enable custom CSS
 >
 > 1. Open the configuration [menu](about:config)
-> 2. Search for, and enable `toolkit.legacyUserProfileCustomizations.stylesheets`
+> 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and change its value to true
