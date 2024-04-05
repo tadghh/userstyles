@@ -1,0 +1,400 @@
+
+:root {
+	--primary-color: #48455e;
+	--secondary-color: #fff;
+	--button-or-text-color-secondary: black;
+	--focus-outline-color: #FFF0 !important;
+	
+}
+
+:root[sessionrestored] #nav-bar:-moz-lwtheme {
+	transition: none !important;
+}
+
+#urlbar, #searchbar {
+  font-size: 1.15em;
+	text-align: center;
+  color: var(--secondary-color) !important;
+  transition: color .4s ease-out;
+}
+
+/* Url bar outline when searching */
+#urlbar[open] > #urlbar-background {
+	border: none !important;
+  box-shadow: none !important;
+}
+
+#urlbar-background, #searchbar {
+  background-color: transparent !important;
+}
+
+/* Focused: hides seperators on focus*/
+#nav-bar-customization-target:focus-within:hover > toolbarspring{
+	transition: max-width 0.2s ease;
+	max-width: 0px !important;
+}
+
+#nav-bar-customization-target > toolbarspring{
+	transition: max-width 0.2s ease;
+	max-width: 160px !important;
+}
+
+#nav-bar-customization-target:focus-within > toolbarbutton, #nav-bar-customization-target:focus-within > toolbaritem > toolbarbutton{
+	fill: var(--primary-color) !important;
+}
+
+/* Focused: Bookmark bar text inverse */
+#navigator-toolbox:focus-within > #PersonalToolbar > toolbarbutton > label, #navigator-toolbox:focus-within > #PersonalToolbar > toolbaritem > hbox > scrollbox > toolbarbutton > label{
+	color: var(--button-or-text-color-secondary) !important;
+}
+
+/*Search result fade in */
+#urlbar{
+	transition: opacity .5s ease;
+}
+
+#urlbar-input::placeholder, .searchbar-textbox::placeholder {
+  opacity: 1 !important;
+}
+
+#urlbar:focus-within {
+	color: var(--primary-color) !important;
+}
+
+/*Browser navigation box*/
+#navigator-toolbox:focus-within{
+  background-color: var(--secondary-color) !important;
+}
+
+#navigator-toolbox{
+	transition: background-color .4s;
+	background-color: var(--primary-color) !important;
+}
+
+/* URL Bar */
+
+#urlbar-input {
+	opacity: 100%;
+}
+
+/*urlbar box shadow*/
+#urlbar[focused="true"] > #urlbar-background,
+#searchbar:focus-within {
+	box-shadow: none !important;
+}
+
+/*  focused address bad selection */
+#urlbar:is([focused="true"], [open]) > #urlbar-background,
+#searchbar:focus-within{
+	background-color: transparent !important; 
+}
+
+/*Line seperator between search results and address bar*/
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+	border-top: none !important;
+}
+
+/* Url bar text color */
+.urlbarView-url {
+	color: #004953 !important;
+	max-width: 50%;
+}
+
+.urlbarView-row:not([type="tip"], [type="dynamic"])[selected] > .urlbarView-row-inner, .urlbarView-row-inner[selected] {
+  background-color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+.urlbarView-row:not([type="tip"], [type="dynamic"])[selected] > .urlbarView-row-inner > .urlbarView-url{
+	color: var(--secondary-color) !important;
+}
+
+/* Tabs */
+
+.browser-toolbar, .tab-content{
+  background-color: transparent !important;
+}
+
+.tabbrowser-tab:is([selected], [multiselected]):-moz-lwtheme {
+  color: var(--button-or-text-color-secondary);
+}
+
+/* Selected tab background */
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[multiselected=true]:-moz-lwtheme,
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected=true]:-moz-lwtheme {
+	background-image: none !important;
+}
+
+/* shadows around tabs*/
+#tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
+	box-shadow: none !important;
+}
+
+/* Mouse hovering over tab color*/
+.tabbrowser-tab:hover > .tab-stack > .tab-background, #navigator-toolbox-background:focus-within #navigator-toolbox:focus-within #titlebar #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab .tab-stack .tab-background{
+	transition: background-color .4s;
+	background-color: var(--secondary-color) !important;
+
+}
+
+.tabbrowser-tab > .tab-stack > .tab-background, #navigator-toolbox-background:focus-within #navigator-toolbox:focus-within #titlebar #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab .tab-stack:hover .tab-background{
+	transition: background-color .4s;
+	background-color: var(--primary-color) !important;
+}
+
+.tabbrowser-tab:hover > stack > hbox >vbox, #navigator-toolbox-background:focus-within #navigator-toolbox:focus-within #titlebar #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab .tab-stack .tab-content .tab-label-container {
+	transition: color .4s;
+  color: var(--button-or-text-color-secondary) !important;
+}
+
+.tabbrowser-tab > stack > hbox >vbox, #navigator-toolbox-background:focus-within #navigator-toolbox:focus-within #titlebar #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab .tab-stack .tab-content:hover .tab-label-container{
+	transition: color .4s;
+  color: var(--secondary-color) !important;
+}
+
+/* tab Text change when urlbar is focused*/
+#navigator-toolbox-background:focus-within > toolbox >vbox > #TabsToolbar > .toolbar-items > hbox > tabs > arrowscrollbox > tab > stack > hbox > vbox{
+	color: var(--primary-color);
+}
+
+/* hamburger icons will change color */
+#navigator-toolbox-background:focus-within > toolbox >toolbar > toolbaritem > toolbarbutton > stack >image{
+	fill: var(--button-or-text-color-secondary) !important;
+}
+
+/* URL bar center aligned text */
+.urlbarView-url {
+	flex-grow: 0 !important;
+	flex-shrink: 0 !important;
+}
+
+.urlbarView-row-inner{
+	justify-content: center !important;
+}
+
+/* Tab Icons */	
+
+/* Focused: Tab close button */
+#navigator-toolbox-background:focus-within toolbox vbox #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab stack hbox image{
+	fill: var(--button-or-text-color-secondary) !important;
+}
+
+/* Tab close icon hover */
+.tabbrowser-tab:hover > stack > hbox > .tab-close-button {
+	color: var(--button-or-text-color-secondary) !important;
+}
+
+/* Close tab icon */
+.tab-close-button{
+	transition: background .4s, color .4s !important;
+	color: var(--secondary-color) !important;
+}
+
+.tab-close-button:hover{
+	background: var(--primary-color) !important;
+	fill: var(--secondary-color) !important;
+}
+
+/* New tab icon */
+#tabs-newtab-button .toolbarbutton-icon{
+	transition: background .4s !important;
+	fill: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within toolbox vbox #TabsToolbar .toolbar-items hbox tabs arrowscrollbox #tabs-newtab-button:hover .toolbarbutton-icon{
+	background: var(--primary-color) !important;
+	fill: var(--secondary-color) !important;
+}	
+
+#tabs-newtab-button:hover .toolbarbutton-icon {
+	background: var(--secondary-color) !important;
+	fill: var(--button-or-text-color-secondary) !important;
+}
+
+#navigator-toolbox-background:focus-within toolbox vbox #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab stack hbox .tab-close-button:hover{
+  background: var(--secondary-color) !important;
+  fill:  var(--primary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within toolbox vbox #TabsToolbar .toolbar-items hbox tabs arrowscrollbox tab stack:hover hbox image{
+	fill: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within toolbox vbox #TabsToolbar .toolbar-items hbox tabs arrowscrollbox #tabs-newtab-button .toolbarbutton-icon{
+	fill: var(--primary-color) !important;
+}
+
+#nav-bar:focus-within hbox #urlbar-container .urlbarView{
+	transition: background-color .4s;
+	background-color: var(--secondary-color);
+	transition: opacity .4s ;
+	opacity: 100%; 
+}
+
+/* Focused: Bookmark text color inverse */
+#navigator-toolbox-background:focus-within > toolbox > #PersonalToolbar > toolbaritem > hbox > hbox > scrollbox > toolbarbutton > label{
+	color: var(--button-or-text-color-secondary) !important;
+}
+
+/*Transition close icon animation issue fix */
+.tabbrowser-tab:not([labelendaligned], :hover) > .tab-stack > .tab-content > .tab-close-button {
+  padding-inline-start: 7px !important;
+  width: 24px !important;
+}
+
+.tabbrowser-tab:is([selected]) .tab-stack .tab-background{
+	background: var(--secondary-color) !important;
+}
+
+.tabbrowser-tab:is([selected]) > .tab-stack > .tab-content > .tab-close-button {
+  fill: var(--button-or-text-color-secondary) !important;
+}
+
+.tabbrowser-tab:is([selected]) > .tab-stack:hover > .tab-content > .tab-close-button {
+	fill: var(--secondary-color) !important; 
+}
+
+.tabbrowser-tab:is([selected]) > .tab-stack > .tab-content > .tab-close-button:hover {
+  background: var(--secondary-color) !important;
+  fill: var(--button-or-text-color-secondary) !important;
+}
+
+.tabbrowser-tab:hover:is([selected]) .tab-stack .tab-background{
+	background: var(--primary-color)  !important;
+}
+
+.tabbrowser-tab:is([selected]) stack hbox vbox label {
+  color: var(--button-or-text-color-secondary) !important;
+}
+
+.tabbrowser-tab:hover:is([selected]) stack hbox vbox label{
+	color: var(--secondary-color) !important;
+}
+ 
+ /* Selected tab when address bar is focused */
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar #TabsToolbar .toolbar-items #TabsToolbar-customization-target #tabbrowser-tabs arrowscrollbox .tabbrowser-tab:is([selected]) .tab-stack .tab-background{
+	background: var(--primary-color) !important;
+	fill: var(--secondary-color);
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar #TabsToolbar .toolbar-items #TabsToolbar-customization-target #tabbrowser-tabs arrowscrollbox .tabbrowser-tab:is([selected]) .tab-stack:hover .tab-background{
+	background: var(--primary-color)  !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar #TabsToolbar .toolbar-items #TabsToolbar-customization-target #tabbrowser-tabs arrowscrollbox .tabbrowser-tab:is([selected]) .tab-stack .tab-content .tab-label-container .tab-text{
+	color: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar #TabsToolbar .toolbar-items #TabsToolbar-customization-target #tabbrowser-tabs arrowscrollbox .tabbrowser-tab:is([selected]) > .tab-stack > .tab-content > .tab-close-button{
+	fill: var(--secondary-color) !important; 
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar #TabsToolbar .toolbar-items #TabsToolbar-customization-target #tabbrowser-tabs arrowscrollbox .tabbrowser-tab:is([selected]) > .tab-stack > .tab-content > .tab-close-button:hover{
+	background: var(--secondary-color) !important;
+	fill: var(--button-or-text-color-secondary) !important;
+}
+
+.titlebar-button:hover,  #navigator-toolbox-background:focus-within #navigator-toolbox #titlebar .titlebar-button:hover{
+	stroke: var(--primary-color) !important;
+	background: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #titlebar .titlebar-button{
+	stroke: var(--secondary-color) !important;
+	background:  var(--primary-color) !important;
+}
+
+.titlebar-button:hover:not([disabled]) .toolbarbutton-icon{
+background: transparent !important;
+}
+
+.toolbarbutton-icon, .titlebar-button{
+  transition: background .4s, fill .4s;
+}
+
+#nav-bar-customization-target:focus-within toolbarbutton:not([disabled]) .toolbarbutton-icon{
+	fill: var(--primary-color) !important;
+	background: var(--secondary-color) !important;
+}
+
+toolbarbutton:hover:not([disabled]) .toolbarbutton-icon{
+	fill: var(--primary-color) !important;
+  background: var(--secondary-color) !important;
+}
+
+#nav-bar-customization-target:focus-within toolbarbutton:hover:not([disabled]) .toolbarbutton-icon{
+	fill: var(--secondary-color) !important;
+	background: var(--primary-color) !important;	
+}
+
+#nav-bar-customization-target:focus-within toolbarbutton:is([disabled]) .toolbarbutton-icon{
+	fill: var(--primary-color) !important;
+}
+
+.urlbarView{
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.toolbarbutton-1:hover stack{
+	background: white !important;
+}
+
+#nav-bar:focus-within toolbaritem .toolbarbutton-1:hover .toolbarbutton-badge-stack{
+	background:  var(--primary-color) !important;
+}
+
+#nav-bar:focus-within toolbaritem .toolbarbutton-1:hover .toolbarbutton-badge-stack .toolbarbutton-icon{
+	background:  var(--primary-color) !important;
+	fill: white !important;
+}
+
+.bookmark-item:hover{	
+	background-color: var(--secondary-color) !important;
+	color: var(--button-or-text-color-secondary) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbar hbox scrollbox .bookmark-item:hover{
+	background:  var(--primary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbar hbox scrollbox .bookmark-item:hover label{
+	color: white !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbar hbox #PlacesToolbarItems .bookmark-item:hover image{
+	background: var(--primary-color)  !important;
+	fill: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #personal-bookmarks #PlacesToolbar hbox #PlacesToolbarItems .bookmark-item image{
+	fill: var(--primary-color)!important;
+}
+
+.titlebar-min{
+	border-bottom-left-radius: 5px;
+}
+
+/*Import Button */
+#import-button:hover{
+	background-color: var(--secondary-color) !important;
+	color: var(--button-or-text-color-secondary) !important;
+}
+
+#import-button, .bookmark-item{
+	transition: background-color .4s, color .7s, fill .4s;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #import-button:hover .toolbarbutton-text{
+	color: var(--secondary-color) !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #import-button:hover .toolbarbutton-icon, #navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #import-button:hover{
+	background: var(--primary-color) !important;
+	fill: var(--secondary-color)  !important;
+}
+
+#navigator-toolbox-background:focus-within #navigator-toolbox #PersonalToolbar #import-button .toolbarbutton-icon{	
+	background-color:  var(--secondary-color) !important;
+	fill: var(--primary-color)  !important;
+}
