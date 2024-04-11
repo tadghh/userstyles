@@ -1,26 +1,13 @@
-## Description
+# Firefox guides and CSS (user styles)
 
-The following user style modifies Firefox's design language. Repurposing the area for the tab's favicon into an action zone, reducing the amount of actions that appear on tabs, while also aiming to reduce overall eye movement. The idea is this will result in less distractions, by having less buttons for your eyes to track. Additionally leveraging transitions and animations in an effort to sustain focus and follow through with their actions.
+This repository contains guides covering customization, and quality of life changes.
 
-### Features
+## Index
 
-- Favicon changes have been smoothed out
-- Tab close icon is only shown on hover
-  - Replaces favicon
-- When the tab's title overflows a marquee effect will be applied
-  - Animation starts after hovering over the tab for 600 ms
-- CSS Variables to customize delays/durations
-
-### Notes
-
-- This was created using Firefox 124.0.2
-- Legacy customization needs to be enabled [⦗Guide⦘](./guides/enable-userstyles/enabling-userstyles)
-- Set the UI density to compact for the best experience [⦗Guide⦘](./guides/compact-ui/enable-compact-ui.md)
-
-### Preview
-
-| Title             |                               Preview                               |
-| :---------------- | :-----------------------------------------------------------------: |
-| Favicon tab close | ![favicon tab close preview](./previews/tab-favicon-actions-1.gif)  |
-| Media Icons       | ![media icon effects preview](./previews/tab-favicon-actions-2.gif) |
-| Marquee           |   ![marquee effect preview](./previews/tab-favicon-actions-3.gif)   |
+- 🎨 Styles
+  - [Favicon as Action area + Marquee effect](./styles/Favicon%20Action%20area%20and%20Title%20Marquee/readme.md)
+- 🛠️ Guides
+  - [Enabling userChrome/user styles](./guides/enable-userstyles/enabling-userstyles.md)
+  - [Removing tab list icon](./guides/remove-tablist-icon/remove-tab-list-icon.md)
+  - [Restore compact UI option](./guides/compact-ui/enable-compact-ui.md)
+  - [Enabling Browser Toolbox](./guides/dev-toolbox/enabling-browser-developer-toolbox.md)
