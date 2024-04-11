@@ -1,2 +1,13 @@
-`about:config`
-`toolkit.legacyUserProfileCustomizations.stylesheets`
+## Enabling userChrome.css
+
+1. Navigate to [about:config](about:config)
+
+2. Search for the string below using the search bar on the previous page
+
+```bash
+ toolkit.legacyUserProfileCustomizations.stylesheets
+```
+
+3. Change the results value to true
+
+![search result of the value to enable use of userChrome, the picture has the results value changed from its default value to true](./resources/1.png)
