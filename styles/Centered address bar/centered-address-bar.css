@@ -1,0 +1,71 @@
+/*
+  Center URL bar
+ */
+
+/* Fix issue with first suggestion displaying incorrectly  */
+.urlbarView-group-aria-label {
+	display: none;
+}
+
+@media screen and (min-height: 600px) {
+	.urlbarView-results[wrap]
+		> .urlbarView-row[has-url]
+		> .urlbarView-row-inner
+		> .urlbarView-url:-moz-locale-dir(ltr) {
+		margin-left: var(--urlbarView-second-line-indent);
+		display: none;
+	}
+}
+
+.urlbarView-overflowable,
+.urlbarView-url {
+	overflow: unset !important;
+}
+
+.urlbarView-favicon {
+	align-self: start !important;
+}
+
+.urlbarView-url {
+	flex-grow: 0 !important;
+}
+
+.urlbarView-overflowable[overflow] {
+	mask-image: none !important;
+}
+
+.urlbarView-row-inner {
+	flex-wrap: wrap !important;
+	flex: none !important;
+}
+
+.urlbarView-row-inner,
+.urlbarView-no-wrap {
+	justify-content: space-between !important;
+}
+
+.urlbarView-no-wrap {
+	flex-grow: 4 !important;
+}
+
+.urlbarView-row {
+	justify-content: center;
+}
+
+.urlbarView-row-inner {
+	display: flex !important;
+}
+
+/* This need to be displayed otherwise the url jumps when the user focuses it */
+#urlbar-go-button {
+	display: block !important;
+}
+
+/* Center url bar */
+.urlbar-input-box {
+	text-align: center !important;
+}
+
+/*
+  End of Center URL
+ */
