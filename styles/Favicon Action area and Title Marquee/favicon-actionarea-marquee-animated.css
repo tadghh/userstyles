@@ -1,86 +1,79 @@
-
-
-/* 
+/*
  Favicon action area
  */
 
-#tabbrowser-arrowscrollbox{
+#tabbrowser-arrowscrollbox {
 	--animation-bounce-delay: 200ms;
 	--animation-compliment-duration: 400ms;
 	--animation-primary-duration: 250ms;
-	--animation-timing: cubic-bezier(.62,.16,.13,1.01);
+	--animation-timing: cubic-bezier(0.62, 0.16, 0.13, 1.01);
 	/* Makes the mute/audio icon more square */
 	--tab-action-icon-border-radius: 2px;
 }
 
- /* Marquee settings */
-#tabbrowser-arrowscrollbox{
-	--tab-text-marq-width: 40rem;
-	--marquee-duration: 2.75s;
-	--marquee-start-delay: 600ms;
-}
-
-
 .tab-icon-image,
-.tab-close-button{
-	will-change: opacity; 
+.tab-close-button {
+	will-change: opacity;
 }
 
-.tab-label-container{
-	will-change: transform; 
+.tab-label-container {
+	will-change: transform;
 }
 
-.tab-icon-overlay{
-	will-change: opacity,transform; 
-	
+.tab-icon-overlay {
+	will-change: opacity, transform;
 }
 
+.tab-throbber,
 .tab-icon-image,
 .tab-icon-pending,
 .tab-throbber,
-.tab-close-button{ 
-	transition: opacity var(--animation-primary-duration) var(--animation-timing); 
+.tab-close-button {
+	transition: opacity var(--animation-primary-duration) var(--animation-timing);
 }
 
-/* 
+/*
 	Overlay needs to be visible, otherwise transition doesnt play.
 	Resulting in the tabs icon abruptly appearing/disappearing.
  */
+.tab-throbber,
+.tab-icon-pending,
 .tab-icon-overlay,
-.tab-icon-image{
+.tab-icon-image {
 	display: inline !important;
 }
 
- /* Tab loading icons shouldnt be delayed */
-.tab-throbber,
+/* Tab loading icons shouldnt be delayed */
+.tab-throbber[busy],
 .tab-icon-pending,
-/* Used to avoid animation collision on mouse off 
+.tab-icon-image[busy],
+/* Used to avoid animation collision on mouse off
  Transition delay to prevent icon clash during transition, the delay prop needs to be after the transition prop */
 .tab-content:hover .tab-icon-image,
-.tab-icon-stack[soundplaying] .tab-icon-image{
+.tab-icon-stack[soundplaying] .tab-icon-image {
 	transition-delay: 0s;
 }
 
-
 /* Bounce off feel */
 .tab-icon-image,
-.tab-content:hover .tab-close-button, 
-.tab-icon-overlay:is([activemedia-blocked],[soundplaying]){
+.tab-content:hover .tab-close-button,
+.tab-icon-overlay:is([activemedia-blocked], [soundplaying]) {
 	transition-delay: var(--animation-bounce-delay);
 }
 
- /* Sound playing/pending tab hover slide animation */
+/* Sound playing/pending tab hover slide animation */
 .tab-label-container,
-.tab-icon-overlay{
-  transition: opacity var(--animation-primary-duration) var(--animation-timing), transform var(--animation-compliment-duration);
+.tab-icon-overlay {
+	transition: opacity var(--animation-primary-duration) var(--animation-timing),
+		transform var(--animation-compliment-duration);
 	transition-timing-function: var(--animation-timing);
 	transition-delay: var(--animation-bounce-delay);
 }
 
 /* Sound playing tab hover end state */
 
-/* 
-  The below two selectors move the tab's label over, an alternative solution might be giving the tab icon overlay a background 
+/*
+  The below two selectors move the tab's label over, an alternative solution might be giving the tab icon overlay a background
 
 	Moving the tab labels results in a weird effect when the marquee animation is playing. It still looks snazzy so its staying
 */
@@ -90,30 +83,30 @@
 /* .tab-content:hover .tab-icon-stack .tab-icon-overlay[activemedia-blocked], */
  /* This solves an issue with attribute changes being delayed, really doubt its a specificity issue. */
 .tab-content:hover .tab-icon-stack[activemedia-blocked] .tab-icon-overlay[activemedia-blocked],
-.tab-content:hover .tab-icon-stack .tab-icon-overlay:is([muted],[soundplaying]){
-  transform: translate(24px);
+.tab-content:hover .tab-icon-stack .tab-icon-overlay:is([muted],[soundplaying]) {
+	transform: translate(24px);
 }
 
 /* Disabling the right padding will lessen the shadow effect applied to tab labels */
-.tab-content{
-	overflow:clip;
+.tab-content {
+	overflow: clip;
 }
 
-.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]){
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
 	opacity: 1;
 	border-radius: var(--tab-action-icon-border-radius) !important;
 }
 
-/* 
+/*
 	The tab-icon-stack occupies the same area as the close icon, we adjust what layer the tab-icon-stack is on to make sure the close tab button is accesible.
 */
 
 /* Lower the z index of the icon stack */
-.tab-icon-stack{
+.tab-icon-stack {
 	z-index: 5;
 }
 
-.tab-close-button{
+.tab-close-button {
 	/* Fix small tab widths hiding close icon */
 	display: inline !important;
 	order: -1;
@@ -121,7 +114,7 @@
 	margin-inline: -5px -20px !important;
 	padding-inline-start: 7px !important;
 	width: unset !important;
-	
+
 	/* Raise the z index of the close button */
 	z-index: 10;
 }
@@ -133,64 +126,18 @@
 .tab-icon-image,
 .tab-icon-image[busy],
 /* the below two selectors hide the tab loading icon when the user is hovering on it */
-.tabbrowser-tab:is([pendingicon],[busy]) .tab-stack .tab-content:hover .tab-icon-stack :where(.tab-icon-pending, .tab-throbber)
-{ opacity: 0; }
+.tabbrowser-tab:is([pendingicon],[busy]) .tab-stack .tab-content:hover .tab-icon-stack :where(.tab-icon-pending, .tab-throbber) {
+	opacity: 0;
+}
 
 /*
  Show close button when hovering on tab, and favicon visability
  */
- .tab-content:hover .tab-close-button,
- .tab-icon-image[src]:not([busy])
-{ opacity: 1; }
- 
-/* 
+.tab-content:hover .tab-close-button,
+.tab-icon-image[src]:not([busy]) {
+	opacity: 1;
+}
+
+/*
  End of favicon action area
  */
- 
- /* Marquee Section */
-
-@keyframes marquee {
-    0% { transform: translate(0); }
-    100% { transform: translate(-100%); }
-}
-
-@keyframes fade-in {
-	
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
- /*  Prevents jittery animations by avoiding layout and repaint considerations. */
-.tab-text{
-	will-change: transform, opacity;
-  opacity: 1;
-	
-		
-	animation: var(--marquee-duration) linear  marquee  var(--marquee-start-delay) paused infinite;	
-
-}
-
-/* Text cannot underflow once the size has been overridden, we need to make sure the tab is no longer busy before applying the new size. This is because firefox sets the url as the tab title during navigation*/
-.tabbrowser-tab:not([label="New Tab"]):not([busy]) .tab-stack .tab-content:hover .tab-label-container[textoverflow] .tab-text {
-
-	/* space between shadows (marquee'ing text) */
-	width: var(--tab-text-marq-width);
-	
-	/* 
-	 Here we have 5 marquee items, including the shadowed text (real text)
-	 This creates the illusion of there being multiple text elements
-	 Source: Showreel. A CSS marquee demo
-	*/
-	text-shadow: var(--tab-text-marq-width) 0 currentColor, 
-                 calc(var(--tab-text-marq-width) * 2) 0 currentColor, 
-                 calc(var(--tab-text-marq-width) * 3) 0 currentColor,
-                 calc(var(--tab-text-marq-width) * 4) 0 currentColor;
-	animation-play-state: running;
-}
-.tabbrowser-tab:not(:hover) .tab-stack .tab-content .tab-label-container[textoverflow] .tab-text {
-	animation: fade-in var(--animation-compliment-duration) var(--animation-timing);		
-}
-/* End of marquee section */
-
-
-
