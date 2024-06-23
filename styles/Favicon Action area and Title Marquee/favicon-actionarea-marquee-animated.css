@@ -141,3 +141,49 @@
 /*
  End of favicon action area
  */
+
+ /* Marquee Section */
+ 
+ /* Marquee settings */
+#tabbrowser-arrowscrollbox{
+	--tab-text-marq-width: 40rem;
+	--marquee-duration: 2.75s;
+	--marquee-start-delay: 600ms;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0); }
+    100% { transform: translate(-100%); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+ /*  Prevents jittery animations by avoiding layout and repaint considerations. */
+.tab-text{
+  will-change: transform, opacity;
+  opacity: 1;	
+  animation: var(--marquee-duration) linear  marquee  var(--marquee-start-delay) paused infinite;	
+}
+
+/* Text cannot underflow once the size has been overridden, we need to make sure the tab is no longer busy before applying the new size. This is because firefox sets the url as the tab title during navigation*/
+.tabbrowser-tab:not([label="New Tab"]):not([busy]) .tab-stack .tab-content:hover .tab-label-container[textoverflow] .tab-text {
+	/* space between shadows (marquee'ing text) */
+	width: var(--tab-text-marq-width);
+	/* 
+	 Here we have 5 marquee items, including the shadowed text (real text)
+	 This creates the illusion of there being multiple text elements
+	 Source: Showreel. A CSS marquee demo
+	*/
+	text-shadow: var(--tab-text-marq-width) 0 currentColor, 
+                 calc(var(--tab-text-marq-width) * 2) 0 currentColor, 
+                 calc(var(--tab-text-marq-width) * 3) 0 currentColor,
+                 calc(var(--tab-text-marq-width) * 4) 0 currentColor;
+	animation-play-state: running;
+}
+.tabbrowser-tab:not(:hover) .tab-stack .tab-content .tab-label-container[textoverflow] .tab-text {
+	animation: fade-in var(--animation-compliment-duration) var(--animation-timing);		
+}
+/* End of marquee section */
