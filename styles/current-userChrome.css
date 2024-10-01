@@ -1,0 +1,310 @@
+/* Remove All Tabs Icon */
+#alltabs-button{
+	display: none;
+}
+
+/* Grab bar */
+.titlebar-buttonbox{
+	padding-left: 50px;
+}
+
+
+/*  Remove useless context menu */
+#context-savepage,#context-pocket,#context-take-screenshot,#context-navigation,menuseparator,#context-inspect-a11y,#context-sendpagetodevice{
+	display:none;
+}
+
+
+.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"]{
+/* 	width: 0px !important; */
+	display: none;
+}
+/* Movement animations for icons Effect */
+.urlbar-icon,
+.toolbarbutton-icon,
+.menuitem-iconic .menu-iconic-icon{
+	will-change: transform;
+  transition: transform 300ms cubic-bezier(.62,.16,.13,1.01) !important;
+}
+
+/* .toolbarbutton-icon,
+.menu-iconic-icon,
+.urlbar-icon,
+toolbarbutton:not(.toolbarbutton-1) > .toolbarbutton-icon{
+  transform: scale(0.825) !important;
+}
+ */
+
+toolbarbutton#scrollbutton-up:not([disabled]):hover > .toolbarbutton-icon,
+toolbarbutton:not(.toolbarbutton-1):not([disabled]):hover > .toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+/* .menuitem-iconic:not([disabled]):hover .menu-iconic-icon, */
+toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menu-iconic:hover > .menu-iconic-left .menu-iconic-icon,
+toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-iconic:hover > .menu-iconic-left .menu-iconic-icon,
+.urlbar-page-action:hover > .urlbar-icon{
+  transform: scale(0.65) !important;
+  opacity: 1 !important;
+}
+
+.tab-secondary-label{
+	display: none !important;
+}
+
+/* 
+  Center URL bar 
+ */
+ 
+/* Fix issue with first suggestion displaying incorrectly  */
+.urlbarView-group-aria-label{
+	display: none;
+}
+
+@media screen and (min-height: 600px) {
+  .urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-url:-moz-locale-dir(ltr) {
+    margin-left: var(--urlbarView-second-line-indent);
+    display: none; 
+  } 
+}
+
+.urlbarView-overflowable, .urlbarView-url{
+	overflow: unset !important;
+}
+
+.urlbarView-favicon{
+	align-self: start !important; 
+}
+
+.urlbarView-url{
+	flex-grow: 0 !important;
+}
+
+.urlbarView-overflowable[overflow]{
+	mask-image: none !important;
+}
+
+.urlbarView-row-inner{
+	flex-wrap: wrap !important;
+	flex: none !important;
+}
+
+.urlbarView-row-inner, .urlbarView-no-wrap{
+	justify-content: space-between !important;
+}
+
+.urlbarView-no-wrap{
+	flex-grow: 4 !important;
+}
+
+.urlbarView-row{
+	justify-content: center;
+}
+
+.urlbarView-row-inner{
+	display: flex !important;
+}
+
+/* This need to be displayed otherwise the url jumps when the user focuses it */
+#urlbar-go-button{
+	display: block !important;
+}
+
+/* Center url bar */
+.urlbar-input-box{ text-align: center !important; }
+
+/* 
+  End of Center URL 
+ */
+
+
+/* 
+ Favicon action area
+ */
+
+#tabbrowser-arrowscrollbox{
+	--animation-bounce-delay: 200ms;
+	--animation-compliment-duration: 400ms;
+	--animation-primary-duration: 250ms;
+	--animation-timing: cubic-bezier(.62,.16,.13,1.01);
+	/* Makes the mute/audio icon more square */
+	--tab-action-icon-border-radius: 2px;
+}
+
+
+
+.tab-icon-image,
+.tab-close-button{
+	will-change: opacity; 
+}
+
+.tab-label-container{
+	will-change: transform; 
+}
+
+.tab-icon-overlay{
+	will-change: opacity,transform; 
+	
+}
+.tab-throbber,
+.tab-icon-image,
+.tab-icon-pending,
+.tab-throbber,
+.tab-close-button{ 
+	transition: opacity var(--animation-primary-duration) var(--animation-timing); 
+}
+
+/* 
+	Overlay needs to be visible, otherwise transition doesnt play.
+	Resulting in the tabs icon abruptly appearing/disappearing.
+ */
+.tab-throbber,
+.tab-icon-pending,
+.tab-icon-overlay,
+.tab-icon-image{
+	display: inline !important;
+}
+
+ /* Tab loading icons shouldnt be delayed */
+.tab-throbber[busy],
+.tab-icon-pending,
+.tab-icon-image[busy],
+/* Used to avoid animation collision on mouse off 
+ Transition delay to prevent icon clash during transition, the delay prop needs to be after the transition prop */
+.tab-content:hover .tab-icon-image,
+.tab-icon-stack[soundplaying] .tab-icon-image{
+	transition-delay: 0s;
+}
+
+
+/* Bounce off feel */
+.tab-icon-image,
+.tab-content:hover .tab-close-button, 
+.tab-icon-overlay:is([activemedia-blocked],[soundplaying]){
+	transition-delay: var(--animation-bounce-delay);
+}
+
+ /* Sound playing/pending tab hover slide animation */
+.tab-label-container,
+.tab-icon-overlay{
+  transition: opacity var(--animation-primary-duration) var(--animation-timing), transform var(--animation-compliment-duration);
+	transition-timing-function: var(--animation-timing);
+	transition-delay: var(--animation-bounce-delay);
+}
+
+/* Sound playing tab hover end state */
+
+/* 
+  The below two selectors move the tab's label over, an alternative solution might be giving the tab icon overlay a background 
+
+	Moving the tab labels results in a weird effect when the marquee animation is playing. It still looks snazzy so its staying
+*/
+
+.tabbrowser-tab:is([soundplaying], [activemedia-blocked], [muted]) .tab-stack .tab-content:hover .tab-label-container,
+/* Icon when a tab has media waiting to play/playing */
+/* .tab-content:hover .tab-icon-stack .tab-icon-overlay[activemedia-blocked], */
+ /* This solves an issue with attribute changes being delayed, really doubt its a specificity issue. */
+.tab-content:hover .tab-icon-stack[activemedia-blocked] .tab-icon-overlay[activemedia-blocked],
+.tab-content:hover .tab-icon-stack .tab-icon-overlay:is([muted],[soundplaying]){
+  transform: translate(24px);
+}
+
+/* Disabling the right padding will lessen the shadow effect applied to tab labels */
+.tab-content{
+	overflow:clip;
+}
+
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]){
+	opacity: 1;
+	border-radius: var(--tab-action-icon-border-radius) !important;
+}
+
+/* 
+	The tab-icon-stack occupies the same area as the close icon, we adjust what layer the tab-icon-stack is on to make sure the close tab button is accesible.
+*/
+
+/* Lower the z index of the icon stack */
+.tab-icon-stack{
+	z-index: 5;
+}
+
+.tab-close-button{
+	/* Fix small tab widths hiding close icon */
+	display: inline !important;
+    order: -1;
+	position: relative;
+	margin-inline: -5px -20px !important;
+	padding-inline-start: 7px !important;
+	width: unset !important;
+	
+	/* Raise the z index of the close button */
+	z-index: 10;
+}
+
+/* States when opacity should be zero*/
+.tab-icon-overlay,
+.tab-close-button,
+.tab-content:hover .tab-icon-image[src]:not([busy]),
+.tab-icon-image,
+.tab-icon-image[busy],
+/* the below two selectors hide the tab loading icon when the user is hovering on it */
+.tabbrowser-tab:is([pendingicon],[busy]) .tab-stack .tab-content:hover .tab-icon-stack :where(.tab-icon-pending, .tab-throbber)
+{ opacity: 0; }
+
+/*
+ Show close button when hovering on tab, and favicon visability
+ */
+ .tab-content:hover .tab-close-button,
+ .tab-icon-image[src]:not([busy])
+{ opacity: 1; }
+ 
+/* 
+ End of favicon action area
+ */
+ 
+ /* Marquee Section */
+ 
+ /* Marquee settings */
+#tabbrowser-arrowscrollbox{
+	--tab-text-marq-width: 40rem;
+	--marquee-duration: 2.75s;
+	--marquee-start-delay: 600ms;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0); }
+    100% { transform: translate(-100%); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+ /*  Prevents jittery animations by avoiding layout and repaint considerations. */
+.tab-text{
+	will-change: transform, opacity;
+    opacity: 1;
+	animation: var(--marquee-duration) linear  marquee  var(--marquee-start-delay) paused infinite;	
+
+}
+
+/* Text cannot underflow once the size has been overridden, we need to make sure the tab is no longer busy before applying the new size. This is because firefox sets the url as the tab title during navigation*/
+.tabbrowser-tab:not([label="New Tab"]):not([busy]) .tab-stack .tab-content:hover .tab-label-container[textoverflow] .tab-text {
+
+	/* space between shadows (marquee'ing text) */
+	width: var(--tab-text-marq-width);
+	
+	/* 
+	 Here we have 5 marquee items, including the shadowed text (real text)
+	 This creates the illusion of there being multiple text elements
+	 Source: Showreel. A CSS marquee demo
+	*/
+	text-shadow: var(--tab-text-marq-width) 0 currentColor, 
+                 calc(var(--tab-text-marq-width) * 2) 0 currentColor, 
+                 calc(var(--tab-text-marq-width) * 3) 0 currentColor,
+                 calc(var(--tab-text-marq-width) * 4) 0 currentColor;
+	animation-play-state: running;
+}
+.tabbrowser-tab:not(:hover) .tab-stack .tab-content .tab-label-container[textoverflow] .tab-text {
+	animation: fade-in var(--animation-compliment-duration) var(--animation-timing);		
+}
+/* End of marquee section */
