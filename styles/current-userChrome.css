@@ -310,7 +310,8 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 /* End of marquee section */
 
 /* Revert the interns styling on the audio playing icon */
-.tab-icon-overlay[soundplaying]{
---tab-icon-overlay-stroke: none;
-border: none !important;
+.tab-icon-overlay[soundplaying],
+.tab-icon-overlay[activemedia-blocked]{
+	--tab-icon-overlay-stroke: none;
+	border: none !important;
 }
