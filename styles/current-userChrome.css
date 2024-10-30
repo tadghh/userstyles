@@ -308,3 +308,9 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 	animation: fade-in var(--animation-compliment-duration) var(--animation-timing);		
 }
 /* End of marquee section */
+
+/* Revert the interns styling on the audio playing icon */
+.tab-icon-overlay[soundplaying]{
+--tab-icon-overlay-stroke: none;
+border: none !important;
+}
