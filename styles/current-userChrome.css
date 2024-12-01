@@ -313,9 +313,9 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 
 /* Change color of tab media icons */
 .tab-icon-overlay[soundplaying],
+.tab-icon-overlay[muted],
 .tab-icon-overlay[activemedia-blocked]{
 	--tab-icon-overlay-stroke: none;
 	--tab-icon-overlay-fill: white;
 	border: none !important;
 }
-
