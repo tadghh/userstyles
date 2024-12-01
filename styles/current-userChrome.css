@@ -8,17 +8,16 @@
 	padding-left: 50px;
 }
 
-
 /*  Remove useless context menu */
 #context-savepage,#context-pocket,#context-take-screenshot,#context-navigation,menuseparator,#context-inspect-a11y,#context-sendpagetodevice{
 	display:none;
 }
 
-
 .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"]{
 /* 	width: 0px !important; */
 	display: none;
 }
+
 /* Movement animations for icons Effect */
 .urlbar-icon,
 .toolbarbutton-icon,
@@ -129,8 +128,6 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 	--tab-action-icon-border-radius: 2px;
 }
 
-
-
 .tab-icon-image,
 .tab-close-button{
 	will-change: opacity; 
@@ -144,6 +141,7 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 	will-change: opacity,transform; 
 	
 }
+
 .tab-throbber,
 .tab-icon-image,
 .tab-icon-pending,
@@ -255,7 +253,13 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
  .tab-content:hover .tab-close-button,
  .tab-icon-image[src]:not([busy])
 { opacity: 1; }
- 
+
+
+/* Fix tab audio icon */
+.tab-icon-overlay[soundplaying]{
+	background-color: transparent;
+	border: none;
+}
 /* 
  End of favicon action area
  */
@@ -284,12 +288,10 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 	will-change: transform, opacity;
     opacity: 1;
 	animation: var(--marquee-duration) linear  marquee  var(--marquee-start-delay) paused infinite;	
-
 }
 
 /* Text cannot underflow once the size has been overridden, we need to make sure the tab is no longer busy before applying the new size. This is because firefox sets the url as the tab title during navigation*/
 .tabbrowser-tab:not([label="New Tab"]):not([busy]) .tab-stack .tab-content:hover .tab-label-container[textoverflow] .tab-text {
-
 	/* space between shadows (marquee'ing text) */
 	width: var(--tab-text-marq-width);
 	
@@ -309,9 +311,11 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 }
 /* End of marquee section */
 
-/* Revert the interns styling on the audio playing icon */
+/* Change color of tab media icons */
 .tab-icon-overlay[soundplaying],
 .tab-icon-overlay[activemedia-blocked]{
 	--tab-icon-overlay-stroke: none;
+	--tab-icon-overlay-fill: white;
 	border: none !important;
 }
+
