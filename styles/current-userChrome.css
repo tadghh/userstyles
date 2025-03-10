@@ -196,14 +196,18 @@ toolbarbutton.bookmark-item:has([container]) .toolbar-menupopup > .menuitem-icon
 	Moving the tab labels results in a weird effect when the marquee animation is playing. It still looks snazzy so its staying
 */
 
-.tabbrowser-tab:is([soundplaying], [activemedia-blocked], [muted]) .tab-stack .tab-content:hover .tab-label-container,
+/* 
+Broken as of V: 136
+Reason: Tab volume icon was moved out of the tab icon stack
+*/
+/* .tabbrowser-tab:is([soundplaying], [activemedia-blocked], [muted]) .tab-stack .tab-content:hover .tab-label-container, */
 /* Icon when a tab has media waiting to play/playing */
 /* .tab-content:hover .tab-icon-stack .tab-icon-overlay[activemedia-blocked], */
  /* This solves an issue with attribute changes being delayed, really doubt its a specificity issue. */
-.tab-content:hover .tab-icon-stack[activemedia-blocked] .tab-icon-overlay[activemedia-blocked],
+/* .tab-content:hover .tab-icon-stack[activemedia-blocked] .tab-icon-overlay[activemedia-blocked],
 .tab-content:hover .tab-icon-stack .tab-icon-overlay:is([muted],[soundplaying]){
   transform: translate(24px);
-}
+} */
 
 /* Disabling the right padding will lessen the shadow effect applied to tab labels */
 .tab-content{
